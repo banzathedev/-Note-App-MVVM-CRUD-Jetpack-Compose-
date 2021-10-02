@@ -10,4 +10,16 @@ class NotesViewModel @Inject constructor(
     private val notesUseCases: NoteUseCases
 ) : ViewModel() {
 
+    fun onEvent(event: NotesEvent) {
+        when (event) {
+            is NotesEvent.Order -> {
+            }
+            is NotesEvent.DeleteNote -> {
+            }
+            is NotesEvent.RestoreNote -> {
+            }
+            is NotesEvent.ToggleOrderSection -> {
+            }
+        }
+    }
 }
