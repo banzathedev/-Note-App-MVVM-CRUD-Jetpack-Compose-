@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
@@ -20,9 +22,9 @@ fun NoteItem(
     cornerRadius: Dp = 10.dp,
     cutCornerRadius: Dp = 30.dp,
     onDeleteClick: () -> Unit
-){
-    Box(modifier = modfier){
-        Canvas(modifier = Modifier.matchParentSize()){
+) {
+    Box(modifier = modfier) {
+        Canvas(modifier = Modifier.matchParentSize()) {
             val clipPath = Path().apply {
                 lineTo(size.width - cutCornerRadius.toPx(), 0f)
                 lineTo(size.width, cutCornerRadius.toPx())
@@ -31,7 +33,7 @@ fun NoteItem(
                 close()
             }
 
-            clipPath(clipPath){
+            clipPath(clipPath) {
                 drawRoundRect(
                     color = Color(note.color),
                     size = size,
@@ -39,7 +41,8 @@ fun NoteItem(
                 )
                 drawRoundRect(
                     color = Color(ColorUtils.blendARGB(note.color, 0x00000, 0.2f)),
-                    size = size,
+                    topLeft = Offset(size.width - cutCornerRadius.toPx(), -100f),
+                    size = Size(cutCornerRadius.toPx() + 100f, cutCornerRadius.toPx() + 100f),
                     cornerRadius = CornerRadius(cornerRadius.toPx())
                 )
             }
