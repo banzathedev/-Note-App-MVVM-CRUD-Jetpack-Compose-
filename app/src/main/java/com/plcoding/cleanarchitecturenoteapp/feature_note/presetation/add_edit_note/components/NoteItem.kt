@@ -1,8 +1,15 @@
 package com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.add_edit_note.components
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -10,6 +17,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
@@ -18,12 +26,12 @@ import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.model.Note
 @Composable
 fun NoteItem(
     note: Note,
-    modfier: Modifier = Modifier,
+    modifier: Modifier = Modifier,
     cornerRadius: Dp = 10.dp,
     cutCornerRadius: Dp = 30.dp,
     onDeleteClick: () -> Unit
 ) {
-    Box(modifier = modfier) {
+    Box(modifier = modifier) {
         Canvas(modifier = Modifier.matchParentSize()) {
             val clipPath = Path().apply {
                 lineTo(size.width - cutCornerRadius.toPx(), 0f)
@@ -46,6 +54,31 @@ fun NoteItem(
                     cornerRadius = CornerRadius(cornerRadius.toPx())
                 )
             }
+        }
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(16.dp)
+                .padding(end = 32.dp)
+        ) {
+            Text(
+                text = note.tittle,
+                style = MaterialTheme.typography.h6,
+                color = MaterialTheme.colors.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = note.content,
+                style = MaterialTheme.typography.body1,
+                color = MaterialTheme.colors.onSurface,
+                maxLines = 10,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
+        IconButton(onClick = onDeleteClick, modifier = Modifier.align(Alignment.BottomEnd)) {
+            Icon(imageVector = Icons.Default.Delete, contentDescription = "delete note")
         }
     }
 }
