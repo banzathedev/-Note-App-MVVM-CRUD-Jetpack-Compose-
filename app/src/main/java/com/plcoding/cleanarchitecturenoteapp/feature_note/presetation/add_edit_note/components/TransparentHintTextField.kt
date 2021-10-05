@@ -13,7 +13,7 @@ import androidx.compose.ui.text.TextStyle
 
 
 @Composable
-fun TranparentHintTextField(
+fun TransparentHintTextField(
     text: String,
     hint: String,
     modifier: Modifier = Modifier,
