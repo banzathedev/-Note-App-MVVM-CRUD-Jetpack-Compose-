@@ -1,4 +1,4 @@
-package com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.add_edit_note
+package com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.notes
 
 import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.model.Note
 import com.plcoding.cleanarchitecturenoteapp.feature_note.domain.util.NoteOrder

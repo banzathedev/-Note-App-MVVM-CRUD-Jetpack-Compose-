@@ -1,4 +1,4 @@
-package com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.add_edit_note
+package com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.notes
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
