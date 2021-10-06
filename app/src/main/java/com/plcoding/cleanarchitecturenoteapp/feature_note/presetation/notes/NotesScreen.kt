@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.add_edit_note.components.NoteItem
 import com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.add_edit_note.components.OrderSection
+import com.plcoding.cleanarchitecturenoteapp.feature_note.presetation.util.Screen
 import kotlinx.coroutines.launch
 
 @ExperimentalAnimationApi
@@ -36,7 +37,7 @@ fun NotesScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    navController.navigate(Screen.AddEditNoteScreen.toString())
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
